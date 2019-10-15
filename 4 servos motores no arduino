@@ -1,0 +1,56 @@
+#include <Servo.h>  
+
+Servo servo_1; 
+Servo servo_2; 
+Servo servo_3; 
+Servo servo_4; 
+int angulo = 0;
+
+void setup() 
+{ 
+servo_1.attach(9); 
+servo_2.attach(3); 
+servo_3.attach(5); 
+servo_4.attach(6); 
+} 
+
+
+void loop() {
+for (angulo = 0; angulo < 90; angulo += 8) { // comando que muda a posição de todos os servo de 0 para 90°
+servo_1.write(angulo); // Comando para angulo específico
+servo_2.write(angulo); // Comando para angulo específico
+servo_3.write(angulo); // Comando para angulo específico
+servo_4.write(angulo); // Comando para angulo específico
+}
+delay(5000);
+for (angulo = 90; angulo < 180; angulo += 8) { // Comando que muda a posição do servo de 90 para 180° 
+servo_1.write(angulo); // Comando para angulo específico 
+delay(15); 
+servo_4.write(angulo); // Comando para angulo específico 
+delay(15);
+}
+delay(2000);
+for (angulo = 90; angulo < 180; angulo += 8) { // Comando que muda a posição do servo de 90 para 180°
+servo_2.write(angulo); // Comando para angulo específico 
+delay(15);
+servo_3.write(angulo); // Comando para angulo específico 
+delay(15); 
+}
+delay(7000);
+
+
+delay(2000); // Tempo de espera para próximo movimento 
+for (angulo = 90; angulo >= 1; angulo -= 5) { // Comando que muda a posição do servo de 180°para 0°
+servo_1.write(angulo); // Comando para angulo específico
+delay(5);
+servo_4.write(angulo); // Comando para angulo específico
+delay(15);
+}
+for (angulo = 90; angulo >= 1; angulo -= 5) { // Comando que muda a posição do servo de 180 para 0°
+servo_2.write(angulo); // Comando para angulo específico
+delay(5);
+servo_3.write(angulo); // Comando para angulo específico
+delay(15);
+}
+delay(2000); // Tempo de espera para próximo movimento
+}
